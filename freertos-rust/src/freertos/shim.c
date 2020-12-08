@@ -113,6 +113,10 @@ TickType_t freertos_rs_get_portTICK_PERIOD_MS() {
 	return portTICK_PERIOD_MS;
 }
 
+TickType_t freertos_rs_get_configTICK_RATE_HZ() {
+	return configTICK_RATE_HZ;
+}
+
 UBaseType_t freertos_rs_get_number_of_tasks() {
 	return uxTaskGetNumberOfTasks();
 }

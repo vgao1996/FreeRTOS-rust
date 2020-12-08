@@ -40,12 +40,8 @@ where
 {
     /// Milliseconds constructor
     pub fn ms(milliseconds: u32) -> Self {
-        let period = T::get_tick_period_ms();
-        let ticks = match period {
-            0 => 1,
-            _ => milliseconds / period,
-        };
-        Self::ticks(ticks)
+        let tick_rate = unsafe { freertos_rs_get_configTICK_RATE_HZ() };
+        Self::ticks(milliseconds * (tick_rate / 1000))
     }
 
     pub fn ticks(ticks: u32) -> Self {
